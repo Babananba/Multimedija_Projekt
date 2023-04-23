@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
@@ -135,6 +138,53 @@
             text-decoration: none;
             cursor: pointer;
         }  
+
+     /* Style the dialog button */
+        .btn-primary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        
+        /* Style the dialog close button */
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        
+        /* Style the dialog when it's shown */
+        dialog[open] {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        
+        /* Style the overlay when the dialog is shown */
+        dialog[open] + .backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 9998;
+        }
     </style>
 </head>
 
@@ -377,8 +427,14 @@
                                     <a href="" class="text-dark" target="_blank">Petar Radonić</a><br />
                                 </p>
                                 <p class="lead">
-                                    <a href="" class="text-dark" target="_blank">Bavim li se i ja ovim sportom ili ga
-                                        samo volim?</a>
+                                    <button class="btn btn-primary" onclick="showPopup()">Bavim li se ja ovim sportom ili ga samo volim?</button>
+                                    <dialog id="myDialog">
+                                    <audio controls>
+                                        <source src="assets/PetarOdg.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <button class="btn btn-secondary" onclick="hidePopup()">Close</button>
+                                    </dialog>
                                 </p>
                                 <p class="lead">
                                     <a href="Radonic.html" class="text-dark" target="_blank">Petrov drugi izbor</a>
@@ -392,8 +448,16 @@
                                     <a href="" class="text-dark" target="_blank">Miljenko Petrović</a>
                                 </p>
                                 <p class="lead">
-                                    <a href="" class="text-dark" target="_blank">Bavim li se i ja ovim
-                                        sportom ili ga samo volim?</a>
+                                    <button class="btn btn-primary" onclick="showPopup2()">Bavim li se ja ovim sportom ili ga samo volim?</button>
+                                    <dialog id="myDialog2">
+                                    <audio controls>
+                                        <source src="assets/MiljenkoOdg.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <button class="btn btn-secondary" onclick="hidePopup2()">Close</button>
+                                    </dialog>
+
+
                                 </p>
                                 <p class="lead">
                                     <a href="Miljenko.html" class="text-dark" target="_blank">
@@ -458,6 +522,25 @@
             };
         }
     </script>
+    <script>
+        function showPopup() {
+            document.getElementById("myDialog").showModal();
+            }
+
+            function hidePopup() {
+            document.getElementById("myDialog").close();
+            }
+    </script>
+    <script>
+        function showPopup2() {
+            document.getElementById("myDialog2").showModal();
+            }
+
+            function hidePopup2() {
+            document.getElementById("myDialog2").close();
+            }
+    </script>
+
 </body>
 
 </html>
