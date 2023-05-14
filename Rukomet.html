@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Naši najdraži sportovi</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        #myImg {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg:hover {
+            opacity: 0.7;
+        }
+
+        #myImg2 {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg2:hover {
+            opacity: 0.7;
+        }
+
+        #Mandic{
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #Mandic:hover {
+            opacity: 0.7;
+        }
+
+        #Karabatic{
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #Karabatic:hover {
+            opacity: 0.7;
+        }
+
+        #Duvnjak{
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #Duvnjak:hover {
+            opacity: 0.7;
+        }
+
+        #Hansen{
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #Hansen:hover {
+            opacity: 0.7;
+        }
+
+        #Balic{
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #Balic:hover {
+            opacity: 0.7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-sadrzaj {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .zatvori {
+            color: #fff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .zatvori:hover,
+        .zatvori:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }  
+
+     /* Style the dialog button */
+        .btn-primary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        
+        /* Style the dialog close button */
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        
+        /* Style the dialog when it's shown */
+        dialog[open] {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        
+        /* Style the overlay when the dialog is shown */
+        dialog[open] + .backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 9998;
+        }
+
+        .white-text {
+            color: white;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="Rukomet.html"><img src="img/logoRukomet.png" width="50" /></a>
+            <a class="navbar-brand" href="Rukomet.html">
+                <h1><b>Rukomet</b></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                </ul>
+            </div>
+            <a class="nav-link white-text" href="index.html">Miljenkov glavni izbor</a>
+        </div>
+        
+        <div id="velikaSlikaModal" class="modal">
+            <span class="zatvori">&times;</span>
+            <img class="modal-sadrzaj" id="velikaSlika">
+        </div>
+    </nav>
+    <header class="bg-dark bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Zašto Rukomet?</h1>
+            <p class="lead">
+                Rukomet je popularan zbog brze igre, timskog duha, taktičkih elemenata i uzbuđenja koje pruža igračima i gledateljima.
+            </p>
+        </div>
+    </header>
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Općenito o rukometu</h2>
+                    <p class="lead">
+                        Rukomet je sport u kojem se igrači bore za golove na protivničkoj strani terena koristeći ruke kako bi lopta ušla u protivnički gol. 
+                        To je brza i dinamična igra koja se igra na terenu veličine 40x20 metara, a igra se u dvije poluvrijeme od 30 minuta. 
+                        Svaka momčad ima sedam igrača na terenu, uključujući jednog vratara. Rukomet je vrlo popularan u Europi, 
+                        ali i u drugim dijelovima svijeta. Postoje međunarodna natjecanja poput Svjetskog prvenstva i Europskog prvenstva, 
+                        te se rukomet igra na olimpijskim igrama.
+                    </p>
+                    <br />
+                    <p class="lead">
+                        Općenito o rukometu možete pročitati
+                        <a href="https://hr.wikipedia.org/wiki/Rukomet">ovdje</a>.
+                    </p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light" id="services">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Pravila rukometa</h2>
+                    <p class="lead">Pravila igre rukometa su sljedeća:</p>
+                    <ul>
+                        <li>
+                            Igrači: Svaka momčad ima sedam igrača, uključujući vratara. Na klupi može biti do 7 zamjena igrača.
+                        </li>
+                        <li>
+                            Trajanje igre: Igra se sastoji od dvije polovice, svaka traje 30 minuta.
+                        </li>
+                        <li>
+                            Cilj igre: Cilj igre je postići više golova od protivničke momčadi.
+                        </li>
+                        <li>
+                            Gol: Gol se postiže kada se lopta prebaci preko gol-linije i ispod prečke, a igrač koji postiže gol ne smije dotaknuti gol-teren.
+                        </li>
+                        <li>
+                            Početak igre: Svaki poluvrijeme započinje s centrašem, a igra se pokreće dodavanjem lopte.
+                        </li>
+                        <li>
+                            Dvostruka greška: Igrač koji drži loptu ne smije se krećiti ili driblati više od tri koraka. Također, nije dozvoljeno skidati loptu iz ruku protivnika.
+                        </li>
+                        <li>
+                            Sedmerac: Sedmerac se dodjeljuje kada igrač napadačke momčadi bude ometen u izvođenju zicera ili udarca na gol od strane protivničkog igrača.
+                        </li>
+                        <li>
+                            Isključenje: Igrač može biti isključen iz igre ako počini tešku grešku ili dobije dvije žute kartone.
+                        </li>
+                        <li>
+                            Vrijeme: Igrači moraju igrati s ograničenim vremenom za izvođenje lopte, a momčadi imaju ograničeno vrijeme za napad i pokušaj postizanja gola.
+                        </li>
+                        <li>
+                            Substitucije: Svaka momčad može izvršiti do sedam zamjena igrača tijekom igre.
+                        </li>
+                    </ul>
+                    <br />
+                    <p class="lead">
+                        Pravila rukometa možete pročitati detaljnije
+                        <a
+                            href="https://hrsport.hr/pravila-rukometa/">ovdje</a>.
+                    </p>
+                    <br />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <video width="450" height="300" style="border: 3px solid #959595" controls
+                                    style="margin-left: auto">
+                                    <source src="img/The Rules of Handball.mp4" type="video/mp4" />
+                                </video>
+                                
+                                <br /><br />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Najveće zvijezde rukometa</h2>
+                    <p class="lead">
+                        Najveće zvijezde rukometa mogu se razlikovati ovisno o razdoblju i natjecanju, ali neki od najboljih rukometaša u povijesti ovog sporta su:
+                    </p>
+                    <ul>
+                        <li>
+                            Nikola Karabatić iz Francuske, višestruki olimpijski, svjetski i europski prvak
+                        </li>
+                        <li>
+                            Mikkel Hansen iz Danske, višestruki svjetski i europski prvak i olimpijski pobjednik
+                        </li>
+                        <li>
+                            Thierry Omeyer iz Francuske, jedan od najboljih vratara u povijesti rukometa.
+                        </li>
+                        <li>
+                            Filip Jícha iz Češke, višestruki europski prvak i svjetski prvak
+                        </li>
+                        <li>
+                            Domagoj Duvnjak iz Hrvatske, višestruki europski prvak i svjetski prvak
+                        </li>
+                    </ul>
+                    <br />
+
+                    <img src="img/Mandic.gif" width="400" height="250" alt="Mandić" id="Mandic" data-velika-slika="img/Mandic.gif" onclick="prikaziVecuSliku(this)"
+                        style="float: left; margin-right: 10px; border: 3px solid #959595" />
+                        <div id="myModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="Mandic" />
+                            <div id="caption"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light" id="services">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Ovo smo mi</h2>
+                    <br />
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <img src="img/Petar2.jpg" data-velika-slika="img/Petar.jpg" width="200" height="200" class="rounded-circle" id="myImg" alt="Petar Radonić" onclick="prikaziVecuSliku(this)" />
+                                <br /><br />
+                                
+                                <p class="lead">
+                                    <a href="Radonic.html" class="text-dark" target="_blank">Petar Radonić</a><br />
+                                </p>
+                                <p class="lead">
+                                    <button class="btn btn-primary" onclick="showPopup()">Bavim li se ja ovim sportom ili ga samo volim?</button>
+                                    <dialog id="myDialog">
+                                    <audio controls>
+                                        <source src="assets/SamoVolimRukomet.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <button class="btn btn-secondary" onclick="hidePopup()">Close</button>
+                                    </dialog>
+                                </p>
+                                <p class="lead">
+                                    <a href="Nogomet.html" class="text-dark" target="_blank">Petrov drugi izbor</a>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <img src="img/Mimo2.jpg" data-velika-slika="img/Mimo.jpg" width="200" height="200" class="rounded-circle" id="myImg2" alt="Miljenko Petrović" onclick="prikaziVecuSliku(this)"  />
+                                <br /><br />
+                                
+                                <p class="lead">
+                                    <a href="Petrovic.html" class="text-dark" target="_blank">Miljenko Petrović</a>
+                                </p>
+                                <p class="lead">
+                                    <button class="btn btn-primary" onclick="showPopup2()">Bavim li se ja ovim sportom ili ga samo volim?</button>
+                                    <dialog id="myDialog2">
+                                    <audio controls>
+                                        <source src="assets/rukomet.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <button class="btn btn-secondary" onclick="hidePopup2()">Close</button>
+                                    </dialog>
+
+
+                                </p>
+                                <p class="lead">
+                                    <a href="MMA.html" class="text-dark" target="_blank">
+                                        Miljenkov drugi izbor</a>
+                                </p>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Galerija slika</h2>
+                    <p class="lead"></p>
+                    <img src="img/Hansen.bmp" width="200" height="250" alt="Mikel Hansen" id="Hansen" onclick="prikaziVecuSliku(this)" data-velika-slika="img/Hansen.bmp"
+                        style="float: left; margin-right: 10px; border: 3px solid #959595" />
+                    <img src="img/Duvnjak.png" width="200" height="250" alt="Domagoj Duvnjak" id="Duvnjak" onclick="prikaziVecuSliku(this)" data-velika-slika="img/Duvnjak.png"
+                        style="float: left; margin-right: 10px; border: 3px solid #959595" />
+                    <img src="img/Karabatic.jpg" width="200" height="250" alt="Nikola Karabatic" id="Karabatic" onclick="prikaziVecuSliku(this)" data-velika-slika="img/Karabatic.jpg"
+                        style="float: left; margin-right: 10px; border: 3px solid #959595" />
+                    <img src="img/Balic.tif" width="200" height="250" alt="Ivano Balić" id="Balic" onclick="prikaziVecuSliku(this)" data-velika-slika="img/Balic.tif"
+                        style="float: left; border: 3px solid #959595" />    
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="py-5 bg-dark">
+        <div class="container px-4">
+            <p class="m-0 text-center text-white">
+                Copyright &copy; Miljenko Petrović & Petar Radonić 21.4.2023.
+            </p>
+        </div>
+        <div class="container px-4">
+            <p class="m-0 text-center text-white">
+                Web stranica izrađena je za vrijeme pohađanja
+                <a href="https://www.ferit.unios.hr/" target="_blank" class="text-white">Fakulteta elektrotehnike,
+                    računarstva i informacijskih
+                    tehnologija</a>
+                u Osijeku u sklopu kolegija
+                <a href="https://moodle.srce.hr/2022-2023/course/view.php?id=128846" target="_blank"
+                    class="text-white">Multimedijska tehnika</a>
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        function prikaziVecuSliku(slika) {
+            var modal = document.getElementById("velikaSlikaModal");
+            var modalSadrzaj = document.getElementById("velikaSlika");
+
+            modal.style.display = "block";
+            modalSadrzaj.src = slika.getAttribute("data-velika-slika");
+
+            var zatvori = document.getElementsByClassName("zatvori")[0];
+            zatvori.onclick = function() {
+                modal.style.display = "none";
+            };
+        }
+    </script>
+    <script>
+        function showPopup() {
+            document.getElementById("myDialog").showModal();
+            }
+
+            function hidePopup() {
+            document.getElementById("myDialog").close();
+            }
+    </script>
+    <script>
+        function showPopup2() {
+            document.getElementById("myDialog2").showModal();
+            }
+
+            function hidePopup2() {
+            document.getElementById("myDialog2").close();
+            }
+    </script>
+
+</body>
+
+</html>
